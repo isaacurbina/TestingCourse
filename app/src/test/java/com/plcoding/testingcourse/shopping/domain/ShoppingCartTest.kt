@@ -5,6 +5,7 @@ import assertk.assertThat
 import assertk.assertions.isEqualTo
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.RepeatedTest
+import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.CsvSource
 
@@ -51,5 +52,19 @@ internal class ShoppingCartTest {
         assertFailure {
             cart.addProduct(product, -5)
         }
+    }
+
+    @Test
+    fun `isValidProduct returns invalid for not existing product`() {
+        val product = Product(
+            id = 1345,
+            name = "Ice cream",
+            price = 5.0
+        )
+        assertFailure {
+            cart.addProduct(product, 4)
+        }
+        val totalPriceSum = cart.getTotalCost()
+        assertThat(totalPriceSum).isEqualTo(0.0)
     }
 }
