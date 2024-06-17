@@ -1,9 +1,9 @@
-package com.plcoding.testingcourse.shopping.domain
+package com.plcoding.testingcourse.core.domain
 
-
-class ShoppingCart {
-
-    private val items = mutableListOf<Product>()
+class ShoppingCart(
+    private val cache: ShoppingCartCache
+) {
+    private val items = cache.loadCart().toMutableList()
     private val validProductIds = (0..5).toList()
 
     fun addProduct(product: Product, quantity: Int) {
@@ -14,6 +14,7 @@ class ShoppingCart {
             repeat(quantity) {
                 items.add(product)
             }
+            cache.saveCart(items)
         } else throw IllegalArgumentException("Product is not valid, check price or ID")
     }
 
