@@ -92,4 +92,7 @@ dependencies {
     // Turbine
     testImplementation "app.cash.turbine:turbine:0.7.0"
     androidTestImplementation "app.cash.turbine:turbine:0.7.0"
+
+    // compose UI test
+    debugImplementation "androidx.compose.ui:ui-test-manifest:1.4.3"
 }
