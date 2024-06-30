@@ -203,4 +203,8 @@ dependencies {
 
     // compose UI test
     debugImplementation "androidx.compose.ui:ui-test-manifest:1.4.3"
+
+    // AssertK
+    testImplementation("com.willowtreeapps.assertk:assertk:0.26.1")
+    androidTestImplementation("com.willowtreeapps.assertk:assertk:0.26.1")
 }
